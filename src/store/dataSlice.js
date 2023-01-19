@@ -1,21 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const dataSlice = createSlice({
-  name: "dataStore",
+  name: "data",
   initialState: {
     data: [],
-    flags: {
-      isPending: true,
-      isCompleted: false,
-      isEmpty: false,
-      isError: false,
-    },
-    error: "",
+    status: "pending",
   },
 
   reducers: {
     addDataToStore(state, action) {
       state.data = action.payload;
+    },
+    updateStatus(state, action) {
+      state.status = action.payload;
     },
   },
 });
