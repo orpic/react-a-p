@@ -14,21 +14,27 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
   return (
     <>
       <nav>
-        <ul>
-          <li>
-            <a onClick={prevPage} href="#no-link">
+        <ul className={classes.ul}>
+          <li className={classes.li}>
+            <a className={classes.a} onClick={prevPage} href="#no-link">
               Previous
             </a>
           </li>
-          {pageNumbers.map((pgNumber) => (
-            <li key={pgNumber}>
-              <a onClick={() => setCurrentPage(pgNumber)} href="#no-link">
-                {pgNumber}
+          {pageNumbers.map((pageNumber) => (
+            <li className={classes.li} key={pageNumber}>
+              <a
+                className={`${classes.a}  ${
+                  currentPage === pageNumber ? classes.act : ""
+                }`}
+                onClick={() => setCurrentPage(pageNumber)}
+                href="#no-link"
+              >
+                {pageNumber}
               </a>
             </li>
           ))}
-          <li>
-            <a onClick={nextPage} href="#no-link">
+          <li className={classes.li}>
+            <a className={classes.a} onClick={nextPage} href="#no-link">
               Next
             </a>
           </li>

@@ -5,7 +5,7 @@ import classes from "./DisplayData.module.css";
 const DisplayData = ({ data }) => {
   return (
     <>
-      <table>
+      <table className={classes.table}>
         <thead>
           <tr>
             <th>
@@ -17,7 +17,7 @@ const DisplayData = ({ data }) => {
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className={classes.body}>
           {data.map((eachItem) => (
             <tr id={eachItem.id}>
               <td>
