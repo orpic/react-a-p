@@ -16,7 +16,7 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
       <nav>
         <ul>
           <li>
-            <a onClick={prevPage} href="#">
+            <a onClick={prevPage} href="#no-link">
               Previous
             </a>
           </li>
