@@ -20,4 +20,5 @@ const dataSlice = createSlice({
   },
 });
 
+export const dataActions = dataSlice.actions;
 export default dataSlice;
