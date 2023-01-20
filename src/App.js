@@ -28,8 +28,13 @@ function App() {
       });
   }, []);
 
+  const [filteredData, setfilteredData] = useState(data);
+  useEffect(() => {
+    setfilteredData(data);
+  }, [data]);
+
   const searchFilter = (input) => {
-    setData(
+    setfilteredData(
       data.filter((eachData) => {
         return (
           eachData.name.toLowerCase().includes(input.toLowerCase()) ||
@@ -42,14 +47,17 @@ function App() {
 
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-  const currentRecords = data.slice(indexOfFirstRecord, indexOfLastRecord);
-  const nPages = Math.ceil(data.length / recordsPerPage);
+  const currentRecords = filteredData.slice(
+    indexOfFirstRecord,
+    indexOfLastRecord
+  );
+  const nPages = Math.ceil(filteredData.length / recordsPerPage);
 
   return (
     <>
       <div>
         <h1 style={{ textAlign: "center" }}>Admin UI</h1>
-        <SearchBar />
+        <SearchBar onInputChange={searchFilter} />
         {loading ? <LoadingSpinner /> : <DisplayData data={currentRecords} />}
         {!loading && (
           <Pagination

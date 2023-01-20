@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import classes from "./SearchBar.module.css";
 
-const SearchBar = () => {
+const SearchBar = ({ onInputChange }) => {
   const [searchText, setSearchText] = useState("");
 
   const onSearchTextChangeHandler = (event) => {
-    setSearchText(event.target.value);
+    const val = event.target.value;
+    onInputChange(val);
+    setSearchText(val);
+    // console.log(val);
   };
 
   return (
