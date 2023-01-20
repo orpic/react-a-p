@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { DisplayData, LoadingSpinner, Pagination } from "./components";
+import {
+  DisplayData,
+  LoadingSpinner,
+  Pagination,
+  SearchBar,
+} from "./components";
 import axios from "axios";
 
 function App() {
@@ -31,13 +36,16 @@ function App() {
   return (
     <>
       <div>
-        <h1>Admin UI</h1>
-        {loading ? LoadingSpinner : <DisplayData data={currentRecords} />}
-        <Pagination
-          nPages={nPages}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
+        <h1 style={{ textAlign: "center" }}>Admin UI</h1>
+        <SearchBar />
+        {loading ? <LoadingSpinner /> : <DisplayData data={currentRecords} />}
+        {!loading && (
+          <Pagination
+            nPages={nPages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+        )}
       </div>
     </>
   );

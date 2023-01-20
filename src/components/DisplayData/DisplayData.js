@@ -19,7 +19,7 @@ const DisplayData = ({ data }) => {
         </thead>
         <tbody className={classes.body}>
           {data.map((eachItem) => (
-            <tr id={eachItem.id}>
+            <tr key={eachItem.id}>
               <td>
                 <input type="checkbox" />
               </td>
