@@ -7,9 +7,13 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 const ActionTab = ({ editFunc, deleteFunc }) => {
-  const editHandler = () => {};
+  const editHandler = () => {
+    editFunc();
+  };
 
-  const deleteHandler = () => {};
+  const deleteHandler = () => {
+    deleteFunc();
+  };
 
   return (
     <div className={classes.actionRow}>

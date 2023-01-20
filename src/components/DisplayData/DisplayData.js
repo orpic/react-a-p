@@ -4,7 +4,15 @@ import classes from "./DisplayData.module.css";
 
 import { ActionTab } from "../../components";
 
-const DisplayData = ({ data }) => {
+const DisplayData = ({ data, delData, editData }) => {
+  const onDelHandler = (id) => {
+    delData(id);
+    console.log("DisplayData.js");
+  };
+
+  const onEditHandler = (id) => {
+    editData(id);
+  };
   return (
     <>
       <table className={classes.table}>
@@ -23,15 +31,20 @@ const DisplayData = ({ data }) => {
           {data.map((eachItem) => (
             <tr key={eachItem.id}>
               <td>
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  value={"hello"}
+                  checked={true}
+                  onChange={"hello"}
+                />
               </td>
               <td>{eachItem.name} </td>
               <td>{eachItem.email} </td>
               <td>{eachItem.role} </td>
               <td>
                 <ActionTab
-                  deleteFunc={console.log("del function")}
-                  editFunc={console.log("edit function")}
+                  deleteFunc={() => onDelHandler(eachItem.id)}
+                  editFunc={() => onEditHandler(eachItem.id)}
                 />
               </td>
             </tr>

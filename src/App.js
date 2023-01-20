@@ -48,6 +48,12 @@ function App() {
     setCurrentPage(1);
   };
 
+  const delData = (id) => {
+    setFilteredData(filteredData.filter((item) => item.id !== id));
+    console.log("Appp.js");
+  };
+  const editData = () => {};
+
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
   const currentRecords = filteredData.slice(
@@ -61,7 +67,15 @@ function App() {
       <div>
         <h1 style={{ textAlign: "center" }}>Admin UI</h1>
         <SearchBar onInputChange={searchFilter} />
-        {loading ? <LoadingSpinner /> : <DisplayData data={currentRecords} />}
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
+          <DisplayData
+            data={currentRecords}
+            delData={delData}
+            editData={editData}
+          />
+        )}
         {!loading && (
           <Pagination
             nPages={nPages}
