@@ -6,17 +6,17 @@ import classes from "./ActionTab.module.css";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const ActionTab = () => {
+const ActionTab = ({ id }) => {
   return (
-    <>
-      <button>
+    <div className={classes.actionRow}>
+      <div className={`${classes.buttons} ${classes.edit}`}>
         <EditIcon />
-      </button>
+      </div>
 
-      <button>
+      <div className={`${classes.buttons} ${classes.red}`}>
         <DeleteIcon />
-      </button>
-    </>
+      </div>
+    </div>
   );
 };
 
