@@ -2,6 +2,8 @@ import React from "react";
 // eslint-disable-next-line
 import classes from "./DisplayData.module.css";
 
+import { ActionTab } from "../../components";
+
 const DisplayData = ({ data }) => {
   return (
     <>
@@ -26,7 +28,9 @@ const DisplayData = ({ data }) => {
               <td>{eachItem.name} </td>
               <td>{eachItem.email} </td>
               <td>{eachItem.role} </td>
-              <td>Actions</td>
+              <td>
+                <ActionTab />
+              </td>
             </tr>
           ))}
         </tbody>
