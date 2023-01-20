@@ -28,13 +28,14 @@ function App() {
       });
   }, []);
 
-  const [filteredData, setfilteredData] = useState(data);
+  const [filteredData, setFilteredData] = useState(data);
   useEffect(() => {
-    setfilteredData(data);
+    setFilteredData(data);
   }, [data]);
 
   const searchFilter = (input) => {
-    setfilteredData(
+    setLoading(true);
+    setFilteredData(
       data.filter((eachData) => {
         return (
           eachData.name.toLowerCase().includes(input.toLowerCase()) ||
@@ -43,6 +44,8 @@ function App() {
         );
       })
     );
+    setLoading(false);
+    setCurrentPage(1);
   };
 
   const indexOfLastRecord = currentPage * recordsPerPage;
