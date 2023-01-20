@@ -28,6 +28,18 @@ function App() {
       });
   }, []);
 
+  const searchFilter = (input) => {
+    setData(
+      data.filter((eachData) => {
+        return (
+          eachData.name.toLowerCase().includes(input.toLowerCase()) ||
+          eachData.email.toLowerCase().includes(input.toLowerCase()) ||
+          eachData.role.toLowerCase().includes(input.toLowerCase())
+        );
+      })
+    );
+  };
+
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
   const currentRecords = data.slice(indexOfFirstRecord, indexOfLastRecord);
