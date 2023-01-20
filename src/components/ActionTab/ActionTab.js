@@ -6,14 +6,24 @@ import classes from "./ActionTab.module.css";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const ActionTab = ({ id }) => {
+const ActionTab = ({ editFunc, deleteFunc }) => {
+  const editHandler = () => {};
+
+  const deleteHandler = () => {};
+
   return (
     <div className={classes.actionRow}>
-      <div className={`${classes.buttons} ${classes.edit}`}>
+      <div
+        onClick={editHandler}
+        className={`${classes.buttons} ${classes.edit}`}
+      >
         <EditIcon />
       </div>
 
-      <div className={`${classes.buttons} ${classes.red}`}>
+      <div
+        onClick={deleteHandler}
+        className={`${classes.buttons} ${classes.red}`}
+      >
         <DeleteIcon />
       </div>
     </div>

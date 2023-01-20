@@ -29,7 +29,10 @@ const DisplayData = ({ data }) => {
               <td>{eachItem.email} </td>
               <td>{eachItem.role} </td>
               <td>
-                <ActionTab />
+                <ActionTab
+                  deleteFunc={console.log("del function")}
+                  editFunc={console.log("edit function")}
+                />
               </td>
             </tr>
           ))}
