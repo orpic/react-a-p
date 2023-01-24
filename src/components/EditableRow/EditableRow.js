@@ -6,7 +6,7 @@ const EditableRow = ({ name, email, role }) => {
   return (
     <>
       <td>
-        <input value={name} />
+        <input className={classes.input} value={name} />
       </td>
       <td>
         <input value={email} />
