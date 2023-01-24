@@ -4,6 +4,7 @@
 }
 
 .table {
+  table-layout: fixed;
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 2rem;
@@ -17,6 +18,9 @@
   font-size: 1.8rem;
 }
 
+.checkbox {
+  width: 40px;
+}
 .table td {
   padding: 10px;
   text-align: left;

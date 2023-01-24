@@ -2,17 +2,17 @@ import React from "react";
 // eslint-disable-next-line
 import classes from "./EditableRow.module.css";
 
-const EditableRow = ({ name, email, role }) => {
+const EditableRow = ({ id, name, email, role }) => {
   return (
     <>
       <td>
         <input className={classes.input} value={name} />
       </td>
       <td>
-        <input value={email} />
+        <input className={classes.input} value={email} />
       </td>
       <td>
-        <input value={role} />
+        <input className={classes.input} value={role} />
       </td>
     </>
   );

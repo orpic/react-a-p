@@ -2,17 +2,26 @@ import React, { useState } from "react";
 // eslint-disable-next-line
 import classes from "./DisplayData.module.css";
 
-import { ActionTab, EditableRow } from "../../components";
+import {
+  ActionTab,
+  ActionTabEditing,
+  EditableRow,
+  ReadOnlyRow,
+} from "../../components";
 
 const DisplayData = ({ data }) => {
   const [editContactId, setEditContactId] = useState("2");
+
+  const setEditRow = (row) => {
+    setEditContactId(row);
+  };
 
   return (
     <>
       <table className={classes.table}>
         <thead>
           <tr>
-            <th>
+            <th className={classes.checkbox}>
               <input type="checkbox" />
             </th>
             <th>Name</th>
@@ -33,21 +42,33 @@ const DisplayData = ({ data }) => {
                 />
               </td>
               {editContactId === eachItem.id ? (
-                <EditableRow
-                  name={eachItem.name}
-                  email={eachItem.email}
-                  role={eachItem.role}
-                />
+                <>
+                  <EditableRow
+                    id={eachItem.id}
+                    name={eachItem.name}
+                    email={eachItem.email}
+                    role={eachItem.role}
+                  />
+                  <td>
+                    <ActionTabEditing
+                      id={eachItem.id}
+                      setEditRow={setEditRow}
+                    />
+                  </td>
+                </>
               ) : (
                 <>
-                  <td>{eachItem.name} </td>
-                  <td>{eachItem.email} </td>
-                  <td>{eachItem.role} </td>
+                  <ReadOnlyRow
+                    id={eachItem.id}
+                    name={eachItem.name}
+                    email={eachItem.email}
+                    role={eachItem.role}
+                  />
+                  <td>
+                    <ActionTab id={eachItem.id} setEditRow={setEditRow} />
+                  </td>
                 </>
               )}
-              <td>
-                <ActionTab id={eachItem.id} />
-              </td>
             </tr>
           ))}
         </tbody>

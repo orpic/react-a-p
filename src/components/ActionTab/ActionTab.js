@@ -1,18 +1,16 @@
 import React from "react";
 // eslint-disable-next-line
 import classes from "./ActionTab.module.css";
-// import CheckIcon from "@mui/icons-material/Check";
-// import CloseIcon from "@mui/icons-material/Close";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch } from "react-redux";
 import { dataActions } from "../../store/dataSlice";
 
-const ActionTab = ({ id }) => {
+const ActionTab = ({ id, setEditRow }) => {
   const dipatch = useDispatch();
 
   const editHandler = () => {
-    // editFunc();
+    setEditRow(id);
   };
 
   const deleteHandler = () => {
