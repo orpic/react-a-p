@@ -5,21 +5,18 @@ import classes from "./ActionTabEditing.module.css";
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 
-const ActionTabEditing = ({ id, setEditRow }) => {
-  const closeEditing = () => {
-    setEditRow("");
-  };
+const ActionTabEditing = ({ editRowComplete, setLeaveEditRow }) => {
   return (
     <div className={classes.actionRow}>
       <div
-        onClick={"editHandler"}
+        onClick={editRowComplete}
         className={`${classes.buttons} ${classes.edit}`}
       >
         <CheckIcon />
       </div>
 
       <div
-        onClick={closeEditing}
+        onClick={setLeaveEditRow}
         className={`${classes.buttons} ${classes.red}`}
       >
         <CloseIcon />

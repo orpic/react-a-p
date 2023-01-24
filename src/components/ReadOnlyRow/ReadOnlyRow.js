@@ -1,13 +1,15 @@
 import React from "react";
-// eslint-disable-next-line
-import classes from "./ReadOnlyRow.module.css";
+import { ActionTab } from "../../components";
 
-const ReadOnlyRow = ({ name, email, role }) => {
+const ReadOnlyRow = ({ id, name, email, role, setEditRow }) => {
   return (
     <>
       <td>{name} </td>
       <td>{email} </td>
       <td>{role} </td>
+      <td>
+        <ActionTab id={id} setEditRow={setEditRow} />
+      </td>
     </>
   );
 };

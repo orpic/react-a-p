@@ -2,15 +2,10 @@ import React, { useState } from "react";
 // eslint-disable-next-line
 import classes from "./DisplayData.module.css";
 
-import {
-  ActionTab,
-  ActionTabEditing,
-  EditableRow,
-  ReadOnlyRow,
-} from "../../components";
+import { EditableRow, ReadOnlyRow } from "../../components";
 
 const DisplayData = ({ data }) => {
-  const [editContactId, setEditContactId] = useState("2");
+  const [editContactId, setEditContactId] = useState("");
 
   const setEditRow = (row) => {
     setEditContactId(row);
@@ -48,13 +43,8 @@ const DisplayData = ({ data }) => {
                     name={eachItem.name}
                     email={eachItem.email}
                     role={eachItem.role}
+                    setEditRow={setEditRow}
                   />
-                  <td>
-                    <ActionTabEditing
-                      id={eachItem.id}
-                      setEditRow={setEditRow}
-                    />
-                  </td>
                 </>
               ) : (
                 <>
@@ -63,10 +53,8 @@ const DisplayData = ({ data }) => {
                     name={eachItem.name}
                     email={eachItem.email}
                     role={eachItem.role}
+                    setEditRow={setEditRow}
                   />
-                  <td>
-                    <ActionTab id={eachItem.id} setEditRow={setEditRow} />
-                  </td>
                 </>
               )}
             </tr>
