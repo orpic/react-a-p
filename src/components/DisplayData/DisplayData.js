@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // eslint-disable-next-line
 import classes from "./DisplayData.module.css";
 
-import { ActionTab } from "../../components";
+import { ActionTab, EditableRow } from "../../components";
 
 const DisplayData = ({ data }) => {
   const [editContactId, setEditContactId] = useState("2");
@@ -33,17 +33,11 @@ const DisplayData = ({ data }) => {
                 />
               </td>
               {editContactId === eachItem.id ? (
-                <>
-                  <td>
-                    <input value={eachItem.name} />
-                  </td>
-                  <td>
-                    <input value={eachItem.email} />
-                  </td>
-                  <td>
-                    <input value={eachItem.role} />
-                  </td>
-                </>
+                <EditableRow
+                  name={eachItem.name}
+                  email={eachItem.email}
+                  role={eachItem.role}
+                />
               ) : (
                 <>
                   <td>{eachItem.name} </td>
