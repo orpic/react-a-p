@@ -5,14 +5,19 @@ import classes from "./ActionTab.module.css";
 // import CloseIcon from "@mui/icons-material/Close";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useDispatch } from "react-redux";
+import { dataActions } from "../../store/dataSlice";
 
-const ActionTab = ({ editFunc, deleteFunc }) => {
+const ActionTab = ({ id }) => {
+  const dipatch = useDispatch();
+
   const editHandler = () => {
-    editFunc();
+    // editFunc();
   };
 
   const deleteHandler = () => {
-    deleteFunc();
+    // deleteFunc();
+    dipatch(dataActions.deleteSinlgeData(id));
   };
 
   return (

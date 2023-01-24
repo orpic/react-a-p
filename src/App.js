@@ -1,82 +1,38 @@
-import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import {
   DisplayData,
   LoadingSpinner,
   Pagination,
   SearchBar,
 } from "./components";
-import axios from "axios";
+import { useDataFetch, useSearch } from "./hooks";
+import { usePagination } from "./hooks";
 
 function App() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  useDataFetch();
+  const data = useSelector((state) => state.data.data);
+  const status = useSelector((state) => state.data.status);
+  const [searchResults, setSearchText] = useSearch(data);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [recordsPerPage] = useState(10);
-
-  useEffect(() => {
-    axios
-      .get(
-        "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
-      )
-      .then((res) => {
-        setData(res.data);
-        setLoading(false);
-      })
-      .catch(() => {
-        alert("error occured");
-      });
-  }, []);
-
-  const [filteredData, setFilteredData] = useState(data);
-  useEffect(() => {
-    setFilteredData(data);
-  }, [data]);
+  const [currentPage, setCurrentPage, currentRecords, nPages] =
+    usePagination(searchResults);
 
   const searchFilter = (input) => {
-    setLoading(true);
-    setFilteredData(
-      data.filter((eachData) => {
-        return (
-          eachData.name.toLowerCase().includes(input.toLowerCase()) ||
-          eachData.email.toLowerCase().includes(input.toLowerCase()) ||
-          eachData.role.toLowerCase().includes(input.toLowerCase())
-        );
-      })
-    );
-    setLoading(false);
+    setSearchText(input);
     setCurrentPage(1);
   };
-
-  const delData = (id) => {
-    setFilteredData(filteredData.filter((item) => item.id !== id));
-    console.log("Appp.js");
-  };
-  const editData = () => {};
-
-  const indexOfLastRecord = currentPage * recordsPerPage;
-  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-  const currentRecords = filteredData.slice(
-    indexOfFirstRecord,
-    indexOfLastRecord
-  );
-  const nPages = Math.ceil(filteredData.length / recordsPerPage);
 
   return (
     <>
       <div>
         <h1 style={{ textAlign: "center" }}>Admin UI</h1>
         <SearchBar onInputChange={searchFilter} />
-        {loading ? (
+        {status === "pending" ? (
           <LoadingSpinner />
         ) : (
-          <DisplayData
-            data={currentRecords}
-            delData={delData}
-            editData={editData}
-          />
+          <DisplayData data={currentRecords} />
         )}
-        {!loading && (
+        {!(status === "pending") && (
           <Pagination
             nPages={nPages}
             currentPage={currentPage}
