@@ -36,6 +36,7 @@ const DisplayData = ({ data, currentPage, setCurrentPage }) => {
   const onMulitpleDeleteHandler = () => {
     dispatch(dataActions.deleteData(selectedIds));
     setCurrentPage(1);
+    setSelectedIds([]);
   };
 
   //reset selected ids for each pagination
