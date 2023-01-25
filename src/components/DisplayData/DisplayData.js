@@ -6,8 +6,9 @@ import { EditableRow, ReadOnlyRow } from "../../components";
 import { useDispatch } from "react-redux";
 import { dataActions } from "../../store/dataSlice";
 
-const DisplayData = ({ data, setCurrentPage }) => {
+const DisplayData = ({ data, currentPage, setCurrentPage }) => {
   const dispatch = useDispatch();
+
   const [editContactId, setEditContactId] = useState("");
   const [selectedIds, setSelectedIds] = useState([]);
 
@@ -40,9 +41,9 @@ const DisplayData = ({ data, setCurrentPage }) => {
   //reset selected ids for each pagination
   useEffect(() => {
     setSelectedIds([]);
-  }, [data, setSelectedIds]);
+  }, [currentPage]);
 
-  console.log(selectedIds);
+  // console.log(selectedIds);
   //which row is being edited
   const setEditRow = (row) => {
     setEditContactId(row);
