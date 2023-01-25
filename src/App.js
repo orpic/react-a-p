@@ -30,7 +30,7 @@ function App() {
         {status === "pending" ? (
           <LoadingSpinner />
         ) : (
-          <DisplayData data={currentRecords} />
+          <DisplayData data={currentRecords} setCurrentPage={setCurrentPage} />
         )}
         {!(status === "pending") && (
           <Pagination
