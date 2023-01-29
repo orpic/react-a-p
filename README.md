@@ -1,4 +1,4 @@
-# React-ecom-shop
+# React-admin-panel
 
 An admin ui panel
 
